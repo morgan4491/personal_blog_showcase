@@ -98,3 +98,7 @@ section {
   position: absolute;
   bottom: -2rem;
 }
+
+.hide {
+  display: none;
+}
