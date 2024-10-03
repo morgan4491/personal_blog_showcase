@@ -21,7 +21,7 @@ function outputBlogList() {
     blogOutput.innerText = `<li>No Blog posts yet...</li>`;
   }
 
-  
+
 
 }
 // TODO: Create a function that handles the case where there are no blog posts to display
@@ -29,7 +29,7 @@ function outputBlogList() {
 // TODO: Create a function called `renderBlogList` that renders the list of blog posts if they exist. If not, call the no posts function.
 
 function renderBlogList() {
-  const data = 
+  const data = '';
 }
 
 // TODO: Call the `renderBlogList` function
