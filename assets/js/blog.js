@@ -1,6 +1,6 @@
 // TODO: Create a variable that selects the main element, and a variable that selects the back button element
 
-const 
+const mainElement = document.querySelector('mainElement');
 const backBtn = document.querySelector('#back');
 
 // TODO: Create a function that builds an element and appends it to the DOM
@@ -15,11 +15,7 @@ function renderBlogList() {
 
 // TODO: Call the `renderBlogList` function
 
+renderBlogList();
+
 // TODO: Redirect to the home page using the `redirectPage` function found in logic.js when the back button is clicked
 
-let redirectURL = '';
-
-const redirectPage = function (url) {
-  redirectURL = url;
-  location.assign(url);
-};

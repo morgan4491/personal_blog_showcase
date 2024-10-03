@@ -3,9 +3,12 @@ const inputForm = document.querySelector('#formInput'); // This variable 'inputF
 
 // TODO: Create a function that handles the form submission. Grab the form data and store it in local storage, then redirect to the blog page using the `redirectPage` function. If the form is submitted with missing data, display an error message to the user.
 
+// document.addEventListener('DOMContentLoaded', function () {
+//     const form = document.querySelector('form');
+//     form.addEventListener('submit', handleFormSubmission);
+// });
 
 function handleFormSubmission(event) {
-    // let redirectURL = '';
 
     const username = document.querySelector('#username').value;
     const title = document.querySelector('#title').value;
@@ -17,32 +20,36 @@ function handleFormSubmission(event) {
         errorMessage.style.display = 'block';
     } else {
         errorMessage.style.display = 'none';
+
+
+        const blogPost = {
+            username: username,
+            title: title,
+            content: content
+        };
+
+        const oldBlogArray = localStorage.getItem('blogs');
+        let blogArray;
+        if (oldBlogArray) {
+            blogArray = JSON.parse(oldBlogArray);
+        } else {
+            blogArray = [];
+        }
+
+        blogArray.push(blogPost);
+
+        localStorage.setItem('blogs', JSON.stringify(blogArray));
+
+        let redirectURL = '';
+
+        const redirectPage = function (url) {
+            redirectURL = url;
+            location.assign(url);
+        };
+
+        redirectPage('blog.html');
     }
 
-    const blogPost = {
-        username: username,
-        title: title,
-        content: content
-    };
-
-    const oldBlogArray = localStorage.getItem('blogs');
-    let blogArray;
-    if (oldBlogArray) {
-        blogArray = JSON.parse(oldBlogArray);
-    } else {
-        blogArray = [];
-    }
-
-    blogArray.push(blogPost);
-
-    localStorage.setItem('blogs', JSON.stringify(blogArray));
-
-    // const redirectPage = function (url) {
-    //     redirectURL = url;
-    //     location.assign(url);
-    // };
-
-    // redirectPage('blog.html');
 
 };
 
