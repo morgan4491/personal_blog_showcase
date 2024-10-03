@@ -6,32 +6,18 @@ const blogOutput = document.querySelector('#blogOutput');
 
 // TODO: Create a function that builds an element and appends it to the DOM
 
-function createAppendElement (type, attributes, content, parent) {
-  const element = document.createElement (type);
-
-  for (const key of attributes) {
-    element.setAttribute(key, attributes[key]);
-  }
-  if (content) {
-    element.innerText = content;
-  }
-
-  parent.appendChild(element);
-
-}
-
 function outputBlogList() {
-  const oldBlogArray = localStorage.getItem('blogs');
-  let blogArray;
-  if (oldBlogArray) {
-    blogArray = JSON.parse(oldBlogArray);
-  } else {
-    blogArray = [];
-  };
+  const blogPosts = readLocalStorage();
+  blogOutput.innerHTML = '';
 
-  blogOutput.innerText = '';
-  
-  
+  for (const blogObj of blogPosts) {
+    mainElement.insertAdjacentHTML('beforeend', `
+      <li>
+        <h3>${blogObj.title} - by ${blogObj.username}</h3>
+        <p>${blogObj.content}</p>
+      </li>
+      `);
+  }
 }
 // TODO: Create a function that handles the case where there are no blog posts to display
 
@@ -57,3 +43,6 @@ renderBlogList();
 
 // TODO: Redirect to the home page using the `redirectPage` function found in logic.js when the back button is clicked
 
+backBtn.addEventListener('click', () => {
+  redirectPage('./index.html');
+});

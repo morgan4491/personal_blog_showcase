@@ -1,6 +1,6 @@
 // TODO: Create logic to toggle the light/dark mode styles for the page and circle. The mode should be saved to local storage.
 const darkModebtn = document.querySelector('#toggle');
-const btnChange = document.querySelectorAll('btn-change');
+
 
 function toggleDarkMode() {
   const mode = localStorage.getItem('mode');
@@ -28,6 +28,7 @@ function pageLoad() {
   }
 
   darkModebtn.addEventListener('click', toggleDarkMode);
+  
 }
 
 pageLoad();
