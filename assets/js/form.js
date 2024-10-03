@@ -5,6 +5,7 @@ const inputForm = document.querySelector('#formInput'); // This variable 'inputF
 
 
 function handleFormSubmission(event) {
+    // let redirectURL = '';
 
     const username = document.querySelector('#username').value;
     const title = document.querySelector('#title').value;
@@ -14,7 +15,7 @@ function handleFormSubmission(event) {
     if (!username || !title || !content) {
         event.preventDefault();
         errorMessage.style.display = 'block';
-    }   else {
+    } else {
         errorMessage.style.display = 'none';
     }
 
@@ -35,6 +36,14 @@ function handleFormSubmission(event) {
     blogArray.push(blogPost);
 
     localStorage.setItem('blogs', JSON.stringify(blogArray));
+
+    // const redirectPage = function (url) {
+    //     redirectURL = url;
+    //     location.assign(url);
+    // };
+
+    // redirectPage('blog.html');
+
 };
 
 // TODO: Add an event listener to the form on submit. Call the function to handle the form submission.
