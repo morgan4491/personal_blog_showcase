@@ -7,12 +7,28 @@ const inputForm = document.querySelector('#formInput'); // This variable 'inputF
 function handleFormSubmission(event) {
     event.preventDefault();
 
-    const username = document.querySelector('#username');
-    const title = document.querySelector('#title');
-    const content = document.querySelector('#content');
+    const username = document.querySelector('#username').value;
+    const title = document.querySelector('#title').value;
+    const content = document.querySelector('#content').value;
+    const blogPost = {
+        username: username,
+        title: title,
+        content: content
+    };
 
+    const oldBlogArray = localStorage.getItem('blogs');
+    let blogArray;
+    if (oldBlogArray) {
+        blogArray = JSON.parse(oldBlogArray);
+    } else {
+        blogArray = [];
+    }
 
+    blogArray.push(blogPost);
+
+    localStorage.setItem('blogs', JSON.stringify(blogArray));
 };
 
 // TODO: Add an event listener to the form on submit. Call the function to handle the form submission.
 
+inputForm.addEventListener('submit', handleFormSubmission);
