@@ -5,11 +5,19 @@ const inputForm = document.querySelector('#formInput'); // This variable 'inputF
 
 
 function handleFormSubmission(event) {
-    event.preventDefault();
 
     const username = document.querySelector('#username').value;
     const title = document.querySelector('#title').value;
     const content = document.querySelector('#content').value;
+    const errorMessage = document.querySelector('#error');
+
+    if (!username || !title || !content) {
+        event.preventDefault();
+        errorMessage.style.display = 'block';
+    }   else {
+        errorMessage.style.display = 'none';
+    }
+
     const blogPost = {
         username: username,
         title: title,
